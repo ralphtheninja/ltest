@@ -68,5 +68,12 @@ Returns a test function of the form `function (desc, cb)` where `desc` is the te
 
 `options` object is passed to `levelup` and to `level-test`. Use this define things like `'keyEncoding'` or other settings for `levelup`. Set `options.mem` to `true` if you want an in memory db.
 
+Set `options.test` to use another test framework than `tape`, e.g.:
+
+```js
+var ltest = require('ltest')({ test: require('tap').test })
+ltest('using tap instead of tape', function (t, db, createReadStream) { /* */ })
+```
+
 ## License
 MIT
