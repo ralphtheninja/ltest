@@ -1,4 +1,4 @@
-var levelup = require('level-test')()
+var LevelUp = require('level-test')
 var rmrf = require('rimraf')
 
 module.exports = function (opts) {
@@ -17,6 +17,7 @@ module.exports = function (opts) {
       throwIfNotFunction(t.ok, 'missing t.ok')
 
       var dbName = 'level-test-' + Date.now()
+      var levelup = LevelUp(opts)
 
       levelup(dbName, opts, function (err, db) {
         t.ok(!err, 'no error on open()')

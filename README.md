@@ -6,7 +6,7 @@ A test function that:
 * Calls back with `t`, `db` and `createReadStream`.
 * Closes `db` and removes files when a test ends via `t.end()`.
 * Adds tests to make sure `db` is opened, closed and removed properly.
-* Supports multiple `levelup` backends via [`level-test`](https://github.com/dominictarr/level-test). Default is `leveldown`.
+* Supports multiple `levelup` backends via [`level-test`](https://github.com/dominictarr/level-test), which also has built in support for `MemDOWN`. Default is `leveldown`.
 * Supports any test framework that has a test function and `t.end` and `t.ok` methods. Defaults is `tape`.
 
 Extracted from the test code in [`level-ttl`](https://github.com/rvagg/node-level-ttl) and made more generic.
@@ -65,6 +65,8 @@ ok 8 db removed
 #### `ltest([options])`
 
 Returns a test function of the form `function (desc, cb)` where `desc` is the test description and `cb` is a callback of the form `function (t, db, createReadStream)`.
+
+`options` object is passed to `levelup` and to `level-test`. Use this define things like `'keyEncoding'` or other settings for `levelup`. Set `options.mem` to `true` if you want an in memory db.
 
 ## License
 MIT
