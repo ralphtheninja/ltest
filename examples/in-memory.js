@@ -1,4 +1,5 @@
-var ltest = require('../')({ mem: true })
+var test = require('tape')
+var ltest = require('../')({ mem: true }, test)
 ltest('in memory', function (t, db, createReadStream) {
   var batch = [
     { type: 'put', key: 'key1', value: 'value1' },

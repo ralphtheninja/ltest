@@ -1,4 +1,5 @@
-var ltest = require('../')()
+var test = require('tape')
+var ltest = require('../')(test)
 ltest('put and stream', function (t, db, createReadStream) {
   db.put('foo', 'bar', function (err) {
     t.ok(!err, 'no put error')

@@ -1,5 +1,6 @@
 var hyper = require('leveldown-hyper')
-var ltest = require('../')({ db: hyper })
+var test = require('tape')
+var ltest = require('../')({ db: hyper }, test)
 ltest('leveldown-hyper backend', function (t, db, createReadStream) {
   var key = 'beep'
   var value = 'boop'

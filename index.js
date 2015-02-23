@@ -1,13 +1,24 @@
 var LevelUp = require('level-test')
+var xtend = require('xtend')
 var rmrf = require('rimraf')
 
-module.exports = function (opts) {
-  opts = opts || {}
-  var test = opts.test || require('tape')
+module.exports = function (opts, test) {
+
+  if (typeof opts == 'function') {
+    test = opts
+    opts = {}
+  }
 
   throwIfNotFunction(test, 'invalid test function')
 
-  return function (desc, callback) {
+  return function (desc, _opts, callback) {
+
+    if (typeof _opts == 'function') {
+      callback = _opts
+      _opts = {}
+    }
+
+    _opts = xtend(opts, _opts)
 
     throwIfNotFunction(callback, 'missing test callback')
 
@@ -19,7 +30,7 @@ module.exports = function (opts) {
       var dbName = 'level-test-' + Date.now()
       var levelup = LevelUp(opts)
 
-      levelup(dbName, opts, function (err, db) {
+      levelup(dbName, _opts, function (err, db) {
         t.ok(!err, 'no error on open()')
         t.ok(db, 'valid db object')
 

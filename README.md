@@ -7,7 +7,7 @@ A test function that:
 * Closes `db` and removes files when a test ends via `t.end()`.
 * Adds tests to make sure `db` is opened, closed and removed properly.
 * Supports multiple `levelup` backends via [`level-test`](https://github.com/dominictarr/level-test), which also has built in support for `MemDOWN`. Default is `leveldown`.
-* Supports any test framework that has a test function and `t.end` and `t.ok` methods. Defaults is `tape`.
+* Supports any test framework that has a test function and `t.end` and `t.ok` methods.
 
 Extracted from the test code in [`level-ttl`](https://github.com/rvagg/node-level-ttl) and made more generic.
 
@@ -62,17 +62,22 @@ ok 8 db removed
 
 ## Api
 
-#### `ltest([options])`
+#### `ltest([options, ]testFn)`
 
-Returns a test function of the form `function (desc, cb)` where `desc` is the test description and `cb` is a callback of the form `function (t, db, createReadStream)`.
+Returns a test function of the form `function (desc[, opts], cb)` where `desc` is the test description, `opts` is an optional options object passed to underlying `db` and `cb` is a callback of the form `function (t, db, createReadStream)`.
 
-`options` object is passed to `levelup` and to `level-test`. Use this define things like `'keyEncoding'` or other settings for `levelup`. Set `options.mem` to `true` if you want an in memory db.
+`options` object is optional and is passed on to `levelup` and to `level-test`. Use this to define things like `'keyEncoding'` or other settings for `levelup`. Set `options.mem` to `true` if you want an in memory db.
 
-Set `options.test` to use another test framework than `tape`, e.g.:
+`testFn` is the test function that should be used. Use any framework you like as long as it's a function and supports `t.end` and `t.ok` methods.
 
 ```js
-var ltest = require('ltest')({ test: require('tap').test })
-ltest('using tap instead of tape', function (t, db, createReadStream) { /* */ })
+var ltest = require('ltest')(require('tape'))
+```
+
+or
+
+```js
+var ltest = require('ltest')(require('tap').test)
 ```
 
 ## License
