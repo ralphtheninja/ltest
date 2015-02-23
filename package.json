@@ -1,0 +1,33 @@
+{
+  "name": "ltest",
+  "version": "0.0.0",
+  "description": "test function for leveldb testing",
+  "main": "index.js",
+  "homepage": "https://github.com/ralphtheninja/ltest",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ralphtheninja/ltest.git"
+  },
+  "scripts": {
+    "test": "tape test/*.js | faucet"
+  },
+  "author": "Lars-Magnus Skog <ralphtheninja@riseup.net>",
+  "keywords": [
+    "test",
+    "testing",
+    "setup",
+    "leveldb",
+    "levelup"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "faucet": "0.0.1",
+    "core-util-is": "^1.0.1",
+    "leveldown-hyper": "^0.10.2"
+  },
+  "dependencies": {
+    "level-test": "^1.7.0",
+    "rimraf": "^2.2.8",
+    "tape": "^3.5.0"
+  }
+}
