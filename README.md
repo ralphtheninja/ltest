@@ -20,8 +20,9 @@ $ npm install ltest --save
 ## Usage
 
 ```js
-var ltest = require('./')()
-ltest('put and stream', function (t, db, createReadStream) {
+var tape = require('tape')
+var test = require('ltest')(tape)
+test('put and stream', function (t, db, createReadStream) {
   db.put('foo', 'bar', function (err) {
     t.ok(!err, 'no put error')
     var count = 0
@@ -33,13 +34,11 @@ ltest('put and stream', function (t, db, createReadStream) {
       })
       .on('end', function () {
         t.equal(count, 1)
-        t.end()
+        t.end() // <-- will close the db and delete files
       })
   })
 })
 ```
-
-Output
 
 ```
 TAP version 13
@@ -66,7 +65,9 @@ ok 8 db removed
 
 Returns a test function of the form `function (desc[, opts], cb)` where `desc` is the test description, `opts` is an optional options object passed to underlying `db` and `cb` is a callback of the form `function (t, db, createReadStream)`.
 
-`options` object is optional and is passed on to `levelup` and to `level-test`. Use this to define things like `'keyEncoding'` or other settings for `levelup`. Set `options.mem` to `true` if you want an in memory db.
+`options` object is optional and is passed on to `levelup` and to `level-test`. Use this to define things like `'keyEncoding'` or other settings for `levelup`.
+
+Set `options.mem` to `true` if you want an in memory db.
 
 `testFn` is the test function that should be used. Use any framework you like as long as it's a function and supports `t.end` and `t.ok` methods.
 
