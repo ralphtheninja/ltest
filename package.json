@@ -23,11 +23,11 @@
   "devDependencies": {
     "core-util-is": "^1.0.1",
     "faucet": "0.0.1",
-    "tape": "~4.0.0",
-    "tap": "^0.6.0"
+    "tape": "~4.3.0",
+    "tap": "^2.3.4"
   },
   "dependencies": {
-    "level-test": "^1.7.0",
+    "level-test": "^2.0.1",
     "rimraf": "^2.2.8",
     "xtend": "^4.0.0"
   }
