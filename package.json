@@ -1,6 +1,6 @@
 {
   "name": "ltest",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "test function for leveldb testing",
   "main": "index.js",
   "homepage": "https://github.com/ralphtheninja/ltest",
