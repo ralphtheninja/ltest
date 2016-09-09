@@ -24,7 +24,7 @@
     "core-util-is": "^1.0.1",
     "faucet": "0.0.1",
     "tape": "~4.4.0",
-    "tap": "^2.3.4"
+    "tap": "^7.1.2"
   },
   "dependencies": {
     "level-test": "^2.0.1",
