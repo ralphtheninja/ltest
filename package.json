@@ -27,7 +27,7 @@
     "tap": "^2.3.4"
   },
   "dependencies": {
-    "level-test": "^2.0.1",
+    "level-test": "^2.0.3",
     "rimraf": "^2.2.8",
     "xtend": "^4.0.0"
   }
