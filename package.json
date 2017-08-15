@@ -23,8 +23,8 @@
   "devDependencies": {
     "core-util-is": "^1.0.1",
     "faucet": "0.0.1",
-    "tape": "~4.4.0",
-    "tap": "^2.3.4"
+    "tape": "~4.8.0",
+    "tap": "^10.7.2"
   },
   "dependencies": {
     "level-test": "^2.0.1",
