@@ -1,5 +1,7 @@
 # ltest [![Build Status](https://travis-ci.org/ralphtheninja/ltest.svg?branch=master)](https://travis-ci.org/ralphtheninja/ltest)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ralphtheninja/ltest.svg)](https://greenkeeper.io/)
+
 A test function that:
 
 * Sets up a fresh temporary `levelup` instance.
